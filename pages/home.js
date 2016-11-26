@@ -1,11 +1,13 @@
-const html = require('choo/html')
+const html = require('choo/html'),
+  navbar = require("../elements/navbar"),
+  shows = require("../elements/shows"),
+  showsModel = require("../models/shows"),
+  sources = require("../models/sources");
 
 module.exports = (state, prev, send) => html`
   <main>
-    <h1>Hello, World!</h1>
-    <p>If you are seeing this, then the generator works!</p>
-    <h2>Demo</h2>
-    <h3>${state.title}</h3>
+    ${navbar()}
+    ${shows(showsModel.state, sources.state)}
     <input
       type="text"
       oninput=${(e) => send('update', { value: e.target.value })} />
