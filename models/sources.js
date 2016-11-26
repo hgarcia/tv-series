@@ -1,5 +1,7 @@
+"use strict";
+
 const sources = {
-  namespace: 'sources',
+  namespace: "sources",
   state: {
     sources: [
       {id: 1, name: "Netflix", url: "https://netflix.com"}
@@ -29,6 +31,6 @@ const sources = {
     }
     */
   ]
-}
+};
 
-module.exports = sources
+module.exports = sources;

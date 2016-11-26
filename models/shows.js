@@ -1,5 +1,7 @@
+"use strict";
+
 const shows = {
-  namespace: 'shows',
+  namespace: "shows",
   state: {
     shows: [
       {title: "X-Files", season: 1, episode: 18, sourceId: 1},
@@ -30,6 +32,6 @@ const shows = {
     }
     */
   ]
-}
+};
 
-module.exports = shows
+module.exports = shows;
