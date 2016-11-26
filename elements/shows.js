@@ -3,7 +3,7 @@
 const html = require("bel"),
   show = require("./show");
 
-function shows (showsState, sourcesState) {
+function shows (state) {
   return html`<table class="table">
     <thead>
       <tr>
@@ -14,8 +14,8 @@ function shows (showsState, sourcesState) {
       </tr>
     </thead>
     <tbody>
-    ${showsState.shows.map((s)=> {
-      return show(s, sourcesState);
+    ${state.shows.titles.map((s)=> {
+      return show(s, state);
     })}
     </tbody>
   </table>`;

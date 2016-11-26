@@ -2,14 +2,14 @@
 
 const html = require("bel");
 
-function getSource(sourceId, sourcesState) {
-  return (sourcesState && sourcesState.sources && Array.isArray(sourcesState.sources)) ?
-    sourcesState.sources.find((s) => s.id === sourceId) :
+function getSource(sourceId, state) {
+  return (state && state.sources && state.sources.list && Array.isArray(state.sources.list)) ?
+    state.sources.list.find((s) => s.id === sourceId) :
     null;
 }
 
-function souceLink (sourceId, sourcesState) {
-  const source = getSource(sourceId, sourcesState);
+function souceLink (sourceId, state) {
+  const source = getSource(sourceId, state);
   return (source) ?
     html`<a href="${source.url}">${source.name}</a>` :
     html`<span></span>`;

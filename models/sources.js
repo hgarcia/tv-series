@@ -3,11 +3,10 @@
 const sources = {
   namespace: "sources",
   state: {
-    sources: [
-      {id: 1, name: "Netflix", url: "https://netflix.com"}
+    list: [
+      {id: 1, name: "Netflix", url: "https://netflix.com"},
+      {id: 2, name: "Netflix", url: "https://netflix.com"}
     ]
-    /* initial values of state inside the model */
-    // title: 'Set the title'
   },
   reducers: {
     /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */

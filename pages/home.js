@@ -2,12 +2,12 @@
 
 const html = require("choo/html"),
   navbar = require("../elements/navbar"),
-  shows = require("../elements/shows"),
-  showsModel = require("../models/shows"),
-  sources = require("../models/sources");
+  shows = require("../elements/shows");
 
-module.exports = () => html`
+module.exports = (state) => {
+  return html`
   <main>
     ${navbar()}
-    ${shows(showsModel.state, sources.state)}
+    ${shows(state)}
   </main>`;
+};

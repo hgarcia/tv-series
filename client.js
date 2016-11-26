@@ -3,7 +3,8 @@
 const choo = require("choo");
 const app = choo();
 
-app.model(require("./models/app"));
+app.model(require("./models/shows"));
+app.model(require("./models/sources"));
 
 app.router((route) => [
   route("/", require("./pages/home"))

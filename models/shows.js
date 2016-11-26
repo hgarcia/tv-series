@@ -3,7 +3,7 @@
 const shows = {
   namespace: "shows",
   state: {
-    shows: [
+    titles: [
       {title: "X-Files", season: 1, episode: 18, sourceId: 1},
       {title: "Last man standing", season: 1, episode: 18, sourceId: 1},
       {title: "Homeland", season: 1, episode: 18, sourceId: 1},
