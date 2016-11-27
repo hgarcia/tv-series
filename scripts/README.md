@@ -1,4 +1,4 @@
-## tv scripts.
+## tv-series scripts.
 
 shell scripts, to be interfaced with through `npm scripts`
 

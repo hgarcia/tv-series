@@ -1,4 +1,4 @@
-## tv pages.
+## tv-series pages.
 
 Views that are directly mounted on the router
 

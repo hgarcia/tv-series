@@ -1,4 +1,4 @@
-## tv lib.
+## tv-series lib.
 
 Generalized components, should be moved out of project later
 

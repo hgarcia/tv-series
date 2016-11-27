@@ -1,4 +1,4 @@
-## tv assets.
+## tv-series assets.
 
 here's a nice place to put your images and fonts, if you have any.
 

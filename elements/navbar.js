@@ -1,6 +1,8 @@
-"use strict";
-
-const html = require("bel");
+// Element: navbar
+//
+// We can use bel instead of choo/html to keep elements modular
+// and allow them to easily move outisde of the app.
+const html = require('bel')
 
 function navbar () {
   return html`<nav class="navbar navbar-light bg-faded">
@@ -20,4 +22,4 @@ function navbar () {
 </nav>`;
 }
 
-module.exports = navbar;
+module.exports = navbar

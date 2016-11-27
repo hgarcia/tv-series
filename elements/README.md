@@ -1,4 +1,4 @@
-## tv elements.
+## tv-series elements.
 
 Standalone application-specific elements.
 

@@ -1,4 +1,4 @@
-projectName: tv
+projectName: tv-series
 template:
   url: https://github.com/trainyard/template-basic
   name: template-basic

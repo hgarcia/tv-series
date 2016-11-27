@@ -1,18 +1,12 @@
-"use strict";
-
 const shows = {
-  namespace: "shows",
+  namespace: 'shows',
   state: {
-    titles: [
-      {title: "X-Files", season: 1, episode: 18, sourceId: 1},
-      {title: "Last man standing", season: 1, episode: 18, sourceId: 1},
-      {title: "Homeland", season: 1, episode: 18, sourceId: 1},
-      {title: "Lucky man", season: 1, episode: 18, sourceId: 1}
-    ]
+    list: []
   },
   reducers: {
-    /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */
-    // update: (data, state) => ({ title: data.value })
+    add: (data, state) => {
+      return {list: state.list.concat(data)};
+    }
   },
   effects: {
     // asynchronous operations that don't modify state directly.
@@ -32,6 +26,6 @@ const shows = {
     }
     */
   ]
-};
+}
 
-module.exports = shows;
+module.exports = shows

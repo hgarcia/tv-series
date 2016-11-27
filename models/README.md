@@ -1,4 +1,4 @@
-## tv choo models.
+## tv-series choo models.
 
 Choo Models go here.
 

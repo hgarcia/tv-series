@@ -1,16 +1,27 @@
-"use strict";
-
-const sources = {
-  namespace: "sources",
+const show = {
+  namespace: 'show',
   state: {
-    list: [
-      {id: 1, name: "Netflix", url: "https://netflix.com"},
-      {id: 2, name: "Netflix", url: "https://netflix.com"}
-    ]
+    title: '',
+    season: 0,
+    episode: 0
   },
   reducers: {
-    /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */
-    // update: (data, state) => ({ title: data.value })
+    updateTitle: (data, state) => {
+      return {title: data};
+    },
+    updateSeason: (data, state) => {
+      return {season: parseInt(data || 0, 10)};
+    },
+    updateEpisode: (data, state) => {
+      return {episode: parseInt(data || 0, 10)};
+    },
+    reset: (data, state) => {
+      return {
+        title: '',
+        season: 0,
+        episode: 0
+      };
+    }
   },
   effects: {
     // asynchronous operations that don't modify state directly.
@@ -30,6 +41,6 @@ const sources = {
     }
     */
   ]
-};
+}
 
-module.exports = sources;
+module.exports = show
