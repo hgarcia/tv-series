@@ -4,9 +4,9 @@
 // and allow them to easily move outisde of the app.
 const html = require('bel')
 
-function show (show, state) {
+function show (show) {
   return html`<tr>
-    <th scope="row">${show.title}</th>
+    <td>${show.title}</td>
     <td>${show.season}</td>
     <td>${show.episode}</td>
   </tr>`;

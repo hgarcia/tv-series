@@ -6,7 +6,7 @@
 const html = require("bel"),
   show = require("./show");
 
-function shows (state) {
+function showList(options) {
   return html`<table class="table">
     <thead>
       <tr>
@@ -16,11 +16,11 @@ function shows (state) {
       </tr>
     </thead>
     <tbody>
-    ${state.shows.list.map((s)=> {
-      return show(s, state);
+    ${options.shows.map((s)=> {
+      return show(s);
     })}
     </tbody>
   </table>`;
 }
 
-module.exports = shows;
+module.exports = showList;

@@ -1,3 +1,10 @@
+function getValue(payload) {
+  if (payload.prop !== "title") {
+    return parseInt(payload.value || 0, 10);
+  }
+  return payload.value;
+}
+
 const show = {
   namespace: 'show',
   state: {
@@ -6,14 +13,10 @@ const show = {
     episode: 0
   },
   reducers: {
-    updateTitle: (data, state) => {
-      return {title: data};
-    },
-    updateSeason: (data, state) => {
-      return {season: parseInt(data || 0, 10)};
-    },
-    updateEpisode: (data, state) => {
-      return {episode: parseInt(data || 0, 10)};
+    update: (payload, state) => {
+      const obj = {};
+      obj[payload.prop] = getValue(payload);
+      return obj;
     },
     reset: (data, state) => {
       return {

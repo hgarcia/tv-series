@@ -3,32 +3,32 @@
 const test = require("tape"),
   show = require("../../models/show");
 
-test("#updateTitle", (assert) => {
-  const result = show.reducers.updateTitle("New title");
+test("#update", (assert) => {
+  const result = show.reducers.update({prop: "title", value: "New title"});
   assert.equal(result.title, "New title", "should update the value");
   assert.end();
 });
 
-test("#updateSeason with falsy value", (assert) => {
-  const result = show.reducers.updateSeason("");
+test("#update season with falsy value", (assert) => {
+  const result = show.reducers.update({prop: "season", value: ""});
   assert.equal(result.season, 0, "should be number 0");
   assert.end();
 });
 
-test("#updateSeason with a string", (assert) => {
-  const result = show.reducers.updateSeason("12");
+test("#update season with a string", (assert) => {
+  const result = show.reducers.update({prop: "season", value: "12"});
   assert.equal(result.season, 12, "should be a number");
   assert.end();
 });
 
-test("#updateEpisode with falsy value", (assert) => {
-  const result = show.reducers.updateEpisode("");
+test("#update episode with falsy value", (assert) => {
+  const result = show.reducers.update({prop: "episode", value: ""});
   assert.equal(result.episode, 0, "should be number 0");
   assert.end();
 });
 
-test("#updateEpisode with a string", (assert) => {
-  const result = show.reducers.updateEpisode("30");
+test("#update episode with a string", (assert) => {
+  const result = show.reducers.update({prop: "episode", value: "30"});
   assert.equal(result.episode, 30, "should be a number");
   assert.end();
 });
