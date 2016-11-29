@@ -6,13 +6,13 @@ const test = require("tape"),
 test("#addShow", (assert) => {
   const rendered = addShow({
     show: {
-      title: '',
+      title: "",
       season: 0,
       episode: 0
     },
     addShow: () => {},
     updateShow: () => {}
   }).toString();
-  assert.notEqual(rendered.indexOf(`<button type="submit" class="btn btn-primary btn-sm">Add</button>`), -1, "Should contains the button");
+  assert.notEqual(rendered.indexOf("<button type=\"submit\" class=\"btn btn-primary btn-sm\">Add</button>"), -1, "Should contains the button");
   assert.end();
 });

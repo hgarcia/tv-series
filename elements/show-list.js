@@ -1,7 +1,6 @@
 // Element: showList
 //
-// We can use bel instead of choo/html to keep elements modular
-// and allow them to easily move outisde of the app.
+"use strict";
 
 const html = require("bel"),
   show = require("./show");

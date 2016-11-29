@@ -1,7 +1,9 @@
-const html = require('choo/html'),
-  navBar = require('../elements/navbar'),
-  addShow = require('../elements/add-show'),
-  showList = require('../elements/show-list')
+"use strict";
+
+const html = require("choo/html"),
+  navBar = require("../elements/navbar"),
+  addShow = require("../elements/add-show"),
+  showList = require("../elements/show-list");
 
 module.exports = (state, prev, send) => {
   return html`
@@ -11,15 +13,14 @@ module.exports = (state, prev, send) => {
         ${addShow({
           show: state.show,
           addShow: (data) => {
-            send('shows:add', data);
-            send('show:reset');
+            send("shows:add", data);
+            send("show:reset");
           },
           updateShow: (data) => {
-            console.log(data);
-            send('show:update', data);
+            send("show:update", data);
           }
         })}
         ${showList({shows: state.shows.list})}
       </div>
-    </main>`
-  }
+    </main>`;
+};

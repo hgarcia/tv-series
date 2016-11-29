@@ -1,5 +1,7 @@
+"use strict";
+
 const shows = {
-  namespace: 'shows',
+  namespace: "shows",
   state: {
     list: []
   },
@@ -26,6 +28,6 @@ const shows = {
     }
     */
   ]
-}
+};
 
-module.exports = shows
+module.exports = shows;

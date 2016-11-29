@@ -1,8 +1,10 @@
+"use strict";
+
 const <%= name %> = {
-  namespace: '<%= name %>',
+  namespace: "<%= name %>",
   state: {
     /* initial values of state inside the model */
-    // title: 'Set the title'
+    // title: "Set the title"
   },
   reducers: {
     /* synchronous operations that modify state. Triggered by actions. Signature of (data, state). */
@@ -26,6 +28,6 @@ const <%= name %> = {
     }
     */
   ]
-}
+};
 
-module.exports = <%= name %>
+module.exports = <%= name %>;

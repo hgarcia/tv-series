@@ -1,13 +1,15 @@
-const choo = require('choo')
-const app = choo()
+"use strict";
 
-app.model(require('./models/show'))
-app.model(require('./models/shows'))
+const choo = require("choo"),
+  app = choo();
+
+app.model(require("./models/show"));
+app.model(require("./models/shows"));
 
 app.router((route) => [
-  route('/', require('./pages/home'))
-])
+  route("/", require("./pages/home"))
+]);
 
-const tree = app.start()
+const tree = app.start();
 
-document.body.appendChild(tree)
+document.body.appendChild(tree);

@@ -1,3 +1,5 @@
+"use strict";
+
 function getValue(payload) {
   if (payload.prop !== "title") {
     return parseInt(payload.value || 0, 10);
@@ -6,21 +8,21 @@ function getValue(payload) {
 }
 
 const show = {
-  namespace: 'show',
+  namespace: "show",
   state: {
-    title: '',
+    title: "",
     season: 0,
     episode: 0
   },
   reducers: {
-    update: (payload, state) => {
+    update: (payload) => {
       const obj = {};
       obj[payload.prop] = getValue(payload);
       return obj;
     },
-    reset: (data, state) => {
+    reset: () => {
       return {
-        title: '',
+        title: "",
         season: 0,
         episode: 0
       };
@@ -44,6 +46,6 @@ const show = {
     }
     */
   ]
-}
+};
 
-module.exports = show
+module.exports = show;

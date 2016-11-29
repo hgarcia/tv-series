@@ -1,8 +1,7 @@
 // Element: addShow
-//
-// We can use bel instead of choo/html to keep elements modular
-// and allow them to easily move outisde of the app.
-const html = require('bel')
+"use strict";
+
+const html = require("bel");
 
 function onInput(prop, options) {
   return (event) => {
@@ -10,7 +9,7 @@ function onInput(prop, options) {
       value: event.target.value
     });
     event.preventDefault();
-  }
+  };
 }
 
 function onSubmit(options) {
@@ -29,19 +28,19 @@ function addShow (options) {
           <div class="form-group col-xs-5">
             <label for="title" class="col-xs-2">Title</label>
             <div class="col-xs-10">
-              <input type="text" oninput=${onInput('title', options)} class="form-control form-control-sm" name="title" id="title" value="${options.show.title}">
+              <input type="text" oninput=${onInput("title", options)} class="form-control form-control-sm" name="title" id="title" value="${options.show.title}">
             </div>
           </div>
           <div class="form-group col-xs-3">
             <label for="title" class="col-xs-5">Season</label>
             <div class="col-xs-7">
-              <input type="number" oninput=${onInput('season', options)} step="1" min="0" class="form-control form-control-sm" name="season" id="season" value="${options.show.season}">
+              <input type="number" oninput=${onInput("season", options)} step="1" min="0" class="form-control form-control-sm" name="season" id="season" value="${options.show.season}">
             </div>
           </div>
           <div class="form-group col-xs-3">
             <label for="title" class="col-xs-5">Episode</label>
             <div class="col-xs-7">
-              <input type="number" oninput=${onInput('episode', options)} step="1" min="0" class="form-control form-control-sm" name="episode" id="episode" value="${options.show.episode}">
+              <input type="number" oninput=${onInput("episode", options)} step="1" min="0" class="form-control form-control-sm" name="episode" id="episode" value="${options.show.episode}">
             </div>
           </div>
           <div class="form-group col-xs-1">
@@ -49,7 +48,7 @@ function addShow (options) {
           </div>
         </form>
       </div>
-    </div>`
+    </div>`;
 }
 
-module.exports = addShow
+module.exports = addShow;

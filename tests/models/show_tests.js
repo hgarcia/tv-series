@@ -35,7 +35,7 @@ test("#update episode with a string", (assert) => {
 
 test("#reset", (assert) => {
   const result = show.reducers.reset();
-  assert.equal(result.title, '', "should remove the title");
+  assert.equal(result.title, "", "should remove the title");
   assert.equal(result.season, 0, "should set the season to 0");
   assert.equal(result.episode, 0, "should set the episode to 0");
   assert.end();
