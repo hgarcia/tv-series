@@ -1,7 +1,8 @@
 // Element: addShow
 "use strict";
 
-const html = require("bel");
+const html = require("bel"),
+  assert = require("assert");
 
 function onInput(prop, options) {
   return (event) => {
@@ -21,6 +22,12 @@ function onSubmit(options) {
 }
 
 function addShow (options) {
+  assert.equal(typeof options.show.title, "string", "addShow: options.show.title must be a string");
+  assert.equal(typeof options.show.season, "number", "addShow: options.show.season must be a number");
+  assert.equal(typeof options.show.episode, "number", "addShow: options.show.episode must be a number");
+  assert.equal(typeof options.addShow, "function", "addShow: options.addShow must be a function");
+  assert.equal(typeof options.updateShow, "function", "addShow: options.updateShow must be a function");
+
   return html`
     <div class="card-block">
       <div class="row">

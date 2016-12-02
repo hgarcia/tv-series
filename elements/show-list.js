@@ -3,9 +3,12 @@
 "use strict";
 
 const html = require("bel"),
-  show = require("./show");
+  show = require("./show"),
+  assert = require("assert");
 
 function showList(options) {
+  assert.ok(Array.isArray(options.shows), "showList: options.shows must be an array");
+
   return html`<table class="table">
     <thead>
       <tr>
