@@ -3,10 +3,13 @@
 const test = require("tape"),
   choo = require("choo"),
   app = choo(),
+  store = require("store"),
+  storage = require("../../lib/storage").create(store),
   home = require("../../pages/home");
 
 app.model(require("../../models/show"));
-app.model(require("../../models/shows"));
+app.model(require("../../models/shows").create(storage));
+
 app.router((route) => [
   route("/", home.render)
 ]);
@@ -48,4 +51,19 @@ test("getAddShowParams:updateShow", (assert) => {
   },
   params = home.getAddShowParams({show: {title: "some thing"}}, send);
   params.updateShow({some: "data"});
+});
+
+test("getShowListParams:shows", (assert) => {
+  const params = home.getShowListParams({shows: {list: [{title: "show"}]}}, () => {});
+  assert.equal(params.shows[0].title, "show", "should return the shows");
+  assert.end();
+});
+
+test("getShowListParams:loadShows", (assert) => {
+  const send = (eventName, data) => {
+    assert.equal(eventName, "shows:load", "It should call shows:load");
+    assert.end();
+  },
+  params = home.getShowListParams({shows: {list: []}}, send);
+  params.loadShows();
 });

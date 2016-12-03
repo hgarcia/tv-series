@@ -1,33 +1,38 @@
 "use strict";
 
-const shows = {
-  namespace: "shows",
-  state: {
-    list: []
-  },
-  reducers: {
-    add: (data, state) => {
-      return {list: state.list.concat(data)};
-    }
-  },
-  effects: {
-    // asynchronous operations that don't modify state directly.
-    // Triggered by actions, can call actions. Signature of (data, state, send, done)
-    /*
-    myEffect: (data, state, send, done) => {
-      // do stuff
-    }
-    */
-  },
-  subscriptions: [
-    // asynchronous read-only operations that don't modify state directly.
-    // Can call actions. Signature of (send, done).
-    /*
-    (send, done) => {
-      // do stuff
-    }
-    */
-  ]
-};
+const uuid = require("uuid");
 
-module.exports = shows;
+module.exports = {
+  create(storage) {
+    return {
+      namespace: "shows",
+      state: {
+        list: []
+      },
+      reducers: {
+        refresh: (data, state) => {
+          return {list: data};
+        }
+      },
+      effects: {
+        add: (data, state, send, done) => {
+          data.id = uuid.v4();
+          storage.save(data);
+          send("shows:refresh", storage.get(), done);
+        },
+        load: (data, state, send, done) => {
+          send("shows:refresh", storage.get(), done);
+        }
+      },
+      subscriptions: [
+        // asynchronous read-only operations that don't modify state directly.
+        // Can call actions. Signature of (send, done).
+        /*
+        (send, done) => {
+          // do stuff
+        }
+        */
+      ]
+    };
+  }
+};

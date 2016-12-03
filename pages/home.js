@@ -18,8 +18,18 @@ function _getAddShowParams(state, send) {
   };
 };
 
+function _getShowListParams(state, send) {
+  return {
+    shows: state.shows.list,
+    loadShows: () => {
+      send("shows:load");
+    }
+  };
+}
+
 module.exports = {
   getAddShowParams: _getAddShowParams,
+  getShowListParams: _getShowListParams,
   render(state, prev, send) {
     var self = this;
     return html`
@@ -27,7 +37,7 @@ module.exports = {
       ${navBar()}
       <div class="container">
       ${addShow(_getAddShowParams(state, send))}
-      ${showList({shows: state.shows.list})}
+      ${showList(_getShowListParams(state, send))}
       </div>
       </main>`;
   }

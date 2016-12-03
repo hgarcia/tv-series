@@ -10,6 +10,7 @@ function getValue(payload) {
 const show = {
   namespace: "show",
   state: {
+    id: "",
     title: "",
     season: 0,
     episode: 0
@@ -22,6 +23,7 @@ const show = {
     },
     reset: () => {
       return {
+        id: "",
         title: "",
         season: 0,
         episode: 0
