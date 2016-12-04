@@ -22,11 +22,16 @@ function showList(options) {
         <th>Title</th>
         <th>Season</th>
         <th>Episode</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
     ${options.shows.map((s)=> {
-      return show(s);
+      return show({
+        show: s,
+        removeShow: options.removeShow,
+        changeShow: options.changeShow
+      });
     })}
     </tbody>
   </table>`;

@@ -22,6 +22,15 @@ module.exports = {
         },
         load: (data, state, send, done) => {
           send("shows:refresh", storage.get(), done);
+        },
+        modify: (data, state, send, done) => {
+          data.show[data.prop] += data.value;
+          storage.save(data.show);
+          send("shows:refresh", storage.get(), done);
+        },
+        remove: (data, state, send, done) => {
+          storage.removeById(data.id);
+          send("shows:refresh", storage.get(), done);
         }
       },
       subscriptions: [

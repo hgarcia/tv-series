@@ -21,8 +21,14 @@ function _getAddShowParams(state, send) {
 function _getShowListParams(state, send) {
   return {
     shows: state.shows.list,
+    changeShow: (data) => {
+      send("shows:modify", data);
+    },
     loadShows: () => {
       send("shows:load");
+    },
+    removeShow: (show) => {
+      send("shows:remove", show);
     }
   };
 }
