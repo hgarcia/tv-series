@@ -1,4 +1,8 @@
+
 .narrow {
-  width: 10%;
+  min-width: 96px;
   text-align: center;
+}
+.wide {
+  width: 70%;
 }

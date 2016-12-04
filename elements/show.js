@@ -34,7 +34,7 @@ function show (options) {
   assert.equal(typeof options.show.episode, "number", "show: options.show.episode must be a number");
 
   return html`<tr>
-    <td style="width: 70%">${options.show.title}</td>
+    <td class="wide">${options.show.title}</td>
     <td class="narrow"><a href="#" class="btn btn-sm" onclick=${onDecrement(options, 'season')}>-</a>${options.show.season}<a href="#" class="btn btn-sm" onclick=${onIncrement(options, 'season')}>+</a></td>
     <td class="narrow"><a href="#" class="btn btn-sm" onclick=${onDecrement(options, 'episode')}>-</a>${options.show.episode}<a href="#" class="btn btn-sm" onclick=${onIncrement(options, 'episode')}>+</a></td>
     <td class="narrow"><a href="#" onclick=${onDelete(options)}>[delete]</a>
