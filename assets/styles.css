@@ -6,3 +6,10 @@
 .wide {
   width: 70%;
 }
+span.error {
+  background-color: #f00;
+  width: 100%;
+  display: inline-block;
+  color: #fff;
+  padding: 0 3px;
+}

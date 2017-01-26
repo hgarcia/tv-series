@@ -1,6 +1,7 @@
 "use strict";
 
-const uuid = require("uuid");
+const uuid = require("uuid"),
+  validations = require("./validations");
 
 module.exports = {
   create(storage) {
@@ -16,9 +17,14 @@ module.exports = {
       },
       effects: {
         add: (data, state, send, done) => {
+          const errors = validations.show(data);
           data.id = uuid.v4();
-          storage.save(data);
-          send("shows:refresh", storage.get(), done);
+          if (!errors) {
+            storage.save(data);
+            send("shows:refresh", storage.get(), done);
+          } else {
+            send("show:errors", errors, done);
+          }
         },
         load: (data, state, send, done) => {
           send("shows:refresh", storage.get(), done);

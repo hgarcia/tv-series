@@ -1,5 +1,7 @@
 "use strict";
 
+const  validations = require("./validations");
+
 function getValue(payload) {
   if (payload.prop !== "title") {
     return parseInt(payload.value || 0, 10);
@@ -13,12 +15,19 @@ const show = {
     id: "",
     title: "",
     season: 0,
-    episode: 0
+    episode: 0,
+    errors: null
   },
   reducers: {
+    errors: (data) => {
+      return {errors: data}
+    },
     update: (payload) => {
       const obj = {};
       obj[payload.prop] = getValue(payload);
+      if (payload.prop === "title") {
+        obj.errors = validations.show(obj);
+      }
       return obj;
     },
     reset: () => {
@@ -26,7 +35,8 @@ const show = {
         id: "",
         title: "",
         season: 0,
-        episode: 0
+        episode: 0,
+        errors: null
       };
     }
   },
