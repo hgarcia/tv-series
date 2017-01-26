@@ -9,23 +9,23 @@ function onDelete(options) {
     e.preventDefault();
     options.removeShow(options.show);
     return false;
-  }
+  };
 }
 
 function onDecrement(options, prop) {
   return (e) => {
     e.preventDefault();
-    options.changeShow({show: options.show, prop: prop, value: -1});
+    options.changeShow({ show: options.show, prop: prop, value: -1 });
     return false;
-  }
+  };
 }
 
 function onIncrement(options, prop) {
   return (e) => {
     e.preventDefault();
-    options.changeShow({show: options.show, prop: prop, value: 1});
+    options.changeShow({ show: options.show, prop: prop, value: 1 });
     return false;
-  }
+  };
 }
 
 function show (options) {
@@ -35,8 +35,8 @@ function show (options) {
 
   return html`<tr>
     <td class="wide">${options.show.title}</td>
-    <td class="narrow"><a href="#" class="btn btn-sm" onclick=${onDecrement(options, 'season')}>-</a>${options.show.season}<a href="#" class="btn btn-sm" onclick=${onIncrement(options, 'season')}>+</a></td>
-    <td class="narrow"><a href="#" class="btn btn-sm" onclick=${onDecrement(options, 'episode')}>-</a>${options.show.episode}<a href="#" class="btn btn-sm" onclick=${onIncrement(options, 'episode')}>+</a></td>
+    <td class="narrow"><a href="#" class="btn btn-sm" onclick=${onDecrement(options, "season")}>-</a>${options.show.season}<a href="#" class="btn btn-sm" onclick=${onIncrement(options, "season")}>+</a></td>
+    <td class="narrow"><a href="#" class="btn btn-sm" onclick=${onDecrement(options, "episode")}>-</a>${options.show.episode}<a href="#" class="btn btn-sm" onclick=${onIncrement(options, "episode")}>+</a></td>
     <td class="narrow"><a href="#" onclick=${onDelete(options)}>[delete]</a>
   </tr>`;
 }

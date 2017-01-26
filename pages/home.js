@@ -16,7 +16,7 @@ function _getAddShowParams(state, send) {
       send("show:update", data);
     }
   };
-};
+}
 
 function _getShowListParams(state, send) {
   return {
@@ -37,7 +37,6 @@ module.exports = {
   getAddShowParams: _getAddShowParams,
   getShowListParams: _getShowListParams,
   render(state, prev, send) {
-    var self = this;
     return html`
       <main>
       ${navBar()}

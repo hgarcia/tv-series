@@ -20,7 +20,7 @@ const show = {
   },
   reducers: {
     errors: (data) => {
-      return {errors: data}
+      return { errors: data };
     },
     update: (payload) => {
       const obj = {};

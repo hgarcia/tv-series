@@ -38,7 +38,7 @@ function addShow (options) {
             <label for="title" class="col-xs-2">Title</label>
             <div class="col-xs-10">
               <input type="text" oninput=${onInput("title", options)} class="form-control form-control-sm" name="title" id="title" value="${options.show.title}">
-              <span class="error ${options.show.errors && options.show.errors.title ? '' : 'hidden'}">${options.show.errors && options.show.errors.title ? options.show.errors.title : ""}</span>
+              <span class="error ${options.show.errors && options.show.errors.title ? "" : "hidden"}">${options.show.errors && options.show.errors.title ? options.show.errors.title : ""}</span>
             </div>
           </div>
           <div class="form-group col-xs-3">
