@@ -3,51 +3,72 @@
 const uuid = require("uuid"),
   validations = require("./validations");
 
+function getValue(payload) {
+  if (payload.prop !== "title") {
+    return parseInt(payload.value || 0, 10);
+  }
+  return payload.value;
+}
+
+function emptyShow() {
+  return {
+    id: "",
+    title: "",
+    season: 0,
+    episode: 0,
+    errors: null
+  };
+}
+
+function render(bus) {
+  return () => {
+    bus.emit("render");
+  };
+}
+
 module.exports = {
   create(storage) {
-    return {
-      namespace: "shows",
-      state: {
-        list: []
-      },
-      reducers: {
-        refresh: (data, state) => {
-          return {list: data};
+    return (state, bus) => {
+      const __render = render(bus);
+      state.show = emptyShow();
+      state.shows = [];
+      bus.on("show:update", function (payload) {
+        state.show[payload.prop] = getValue(payload);
+        if (payload.prop === "title") {
+          state.show.errors = validations.show(state.show);
+          __render();
         }
-      },
-      effects: {
-        add: (data, state, send, done) => {
-          const errors = validations.show(data);
-          data.id = uuid.v4();
-          if (!errors) {
-            storage.save(data);
-            send("shows:refresh", storage.get(), done);
-          } else {
-            send("show:errors", errors, done);
-          }
-        },
-        load: (data, state, send, done) => {
-          send("shows:refresh", storage.get(), done);
-        },
-        modify: (data, state, send, done) => {
-          data.show[data.prop] += data.value;
-          storage.save(data.show);
-          send("shows:refresh", storage.get(), done);
-        },
-        remove: (data, state, send, done) => {
-          storage.removeById(data.id);
-          send("shows:refresh", storage.get(), done);
+      });
+      bus.on("show:reset", () => {
+        state.show = emptyShow();
+        __render();
+      });
+      bus.on("shows:add", (data) => {
+        const errors = validations.show(data);
+        data.id = uuid.v4();
+        if (!errors) {
+          state.shows.push(data);
+          storage.save(data);
+          __render();
+        } else {
+          state.show.errors = errors;
+          __render();
         }
-      },
-      subscriptions: [
-        // asynchronous read-only operations that don't modify state directly.
-        // Can call actions. Signature of (send, done).
-        /*
-        (send, done) => {
-          // do stuff
-        }
-        */
-      ]
+      });
+
+      bus.on("shows:load", () => {
+        state.shows = storage.get();
+        __render();
+      });
+      bus.on("shows:modify", (data) => {
+        data.show[data.prop] += data.value;
+        storage.save(data.show);
+        bus.emit("shows:load");
+      });
+      bus.on("shows:remove", (data) => {
+        storage.removeById(data.id);
+        bus.emit("shows:load");
+      });
     };
   }
 };

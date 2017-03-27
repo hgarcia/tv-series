@@ -4,31 +4,25 @@
   "description": "Created with choo-cli",
   "license": "MIT",
   "scripts": {
-    "build:prod": "scripts/build-prod.sh",
-    "start": "budo ./client.js --live --pushstate --open -- -g es2040",
+    "start": "bankai client.js -p 8080 --open",
+    "build:prod": "bankai build client.js dist/",
     "lint": "eslint *.js **/*.js tests/**/*.js",
     "test": "tape tests/**/*.js | tap-diff",
     "test-w": "tape-watch tests/**/*.js | tap-diff",
-    "serve": "serve"
+    "serve": "serve --port 3000"
   },
   "dependencies": {
-    "choo": "^3.2.0",
+    "choo": "^5.0.4",
     "serve": "^2.4.3",
     "store": "^1.3.20",
     "uuid": "^3.0.1",
     "validate.js": "^0.11.1"
   },
   "devDependencies": {
-    "browserify": "^13.0.1",
-    "budo": "8.3.0",
-    "envify": "^3.4.1",
-    "es2040": "1.2.2",
+    "bankai": "^6.0.0",
     "eslint": "^3.11.1",
     "tap-diff": "^0.1.1",
     "tape": "^4.6.3",
-    "tape-watch": "^2.2.4",
-    "uglifyify": "^3.0.2",
-    "unassertify": "^2.0.3",
-    "yo-yoify": "^3.3.0"
+    "tape-watch": "^2.2.4"
   }
 }

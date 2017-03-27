@@ -6,12 +6,8 @@ const choo = require("choo"),
   store = require("store"),
   storage = require("./lib/storage").create(store);
 
-app.model(require("./models/show"));
-app.model(require("./models/shows").create(storage));
-
-app.router((route) => [
-  route("/", home.render)
-]);
+app.use(require("./models/shows").create(storage));
+app.route("/", home.render);
 
 const tree = app.start();
 

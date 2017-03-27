@@ -5,30 +5,30 @@ const html = require("choo/html"),
   addShow = require("../elements/add-show"),
   showList = require("../elements/show-list");
 
-function _getAddShowParams(state, send) {
+function _getAddShowParams(state, emit) {
   return {
     show: state.show,
     addShow: (data) => {
-      send("shows:add", data);
-      send("show:reset");
+      emit("shows:add", data);
+      emit("show:reset");
     },
     updateShow: (data) => {
-      send("show:update", data);
+      emit("show:update", data);
     }
   };
 }
 
-function _getShowListParams(state, send) {
+function _getShowListParams(state, emit) {
   return {
-    shows: state.shows.list,
+    shows: state.shows,
     changeShow: (data) => {
-      send("shows:modify", data);
+      emit("shows:modify", data);
     },
     loadShows: () => {
-      send("shows:load");
+      emit("shows:load");
     },
     removeShow: (show) => {
-      send("shows:remove", show);
+      emit("shows:remove", show);
     }
   };
 }
@@ -36,13 +36,13 @@ function _getShowListParams(state, send) {
 module.exports = {
   getAddShowParams: _getAddShowParams,
   getShowListParams: _getShowListParams,
-  render(state, prev, send) {
+  render(state, emit) {
     return html`
       <main>
       ${navBar()}
       <div class="container">
-      ${addShow(_getAddShowParams(state, send))}
-      ${showList(_getShowListParams(state, send))}
+      ${addShow(_getAddShowParams(state, emit))}
+      ${showList(_getShowListParams(state, emit))}
       </div>
       </main>`;
   }
