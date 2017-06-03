@@ -3,8 +3,7 @@
 const test = require("tape"),
   choo = require("choo"),
   app = choo(),
-  store = require("store"),
-  storage = require("../../lib/storage").create(store),
+  storage = require("../../lib/storage").create(),
   home = require("../../pages/home");
 
 app.use(require("../../models/shows").create(storage));
