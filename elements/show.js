@@ -28,7 +28,7 @@ function onIncrement(options, prop) {
   };
 }
 
-function show (options) {
+function show(options) {
   assert.equal(typeof options.show.title, "string", "show: options.show.title must be a string");
   assert.equal(typeof options.show.season, "number", "show: options.show.season must be a number");
   assert.equal(typeof options.show.episode, "number", "show: options.show.episode must be a number");

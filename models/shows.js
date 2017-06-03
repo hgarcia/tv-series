@@ -57,8 +57,10 @@ module.exports = {
       });
 
       bus.on("shows:load", () => {
-        state.shows = storage.get();
-        __render();
+        storage.get((shows) => {
+          state.shows = shows;
+          __render();
+        });
       });
       bus.on("shows:modify", (data) => {
         data.show[data.prop] += data.value;
